@@ -16,11 +16,26 @@ app.use(bodyParser.json());
 // Store (DATA)
 // =============================================================
 var reservation = [
- // define all fields required
- {
-   
- }
-  
+// define all fields required
+	{
+		name: "test1",
+		number: "123",
+		email: "123@a.a",
+		id: 1
+	},
+	{
+		name: "test2",
+		number: "123",
+		email: "123@a.a",
+		id: 2
+	},
+	{
+		name: "test3",
+		number: "123",
+		email: "123@a.a",
+		id: 3
+	}
+
 ];
 
 // Routes
@@ -28,7 +43,7 @@ var reservation = [
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/home.html"));
+  	res.sendFile(path.join(__dirname, "../public/home.html"));
 });
 
 app.get("/reserve", function(req, res) {
@@ -40,19 +55,19 @@ app.get("/tables", function(req, res) {
 });
 
 // Displays all characters
-app.get("/api/characters", function(req, res) {
-  return res.json(characters);
+app.get("/api/tables", function(req, res) {
+  return res.json(reservation);
 });
 
 // Displays a single character, or returns false
-app.get("/api/characters/:character", function(req, res) {
-  var chosen = req.params.character;
+app.get("/api/tables/:id", function(req, res) {
+  var chosen = req.params.id;
 
   console.log(chosen);
 
-  for (var i = 0; i < characters.length; i++) {
-    if (chosen === characters[i].routeName) {
-      return res.json(characters[i]);
+  for (var i = 0; i < reservation.length; i++) {
+    if (chosen === reservation[i].id.toString()) {
+      return res.json(reservation[i]);
     }
   }
 
