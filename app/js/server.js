@@ -21,19 +21,19 @@ var reservation = [
 		name: "test1",
 		number: "123",
 		email: "123@a.a",
-		id: 1
+		id: "1"
 	},
 	{
 		name: "test2",
 		number: "123",
 		email: "123@a.a",
-		id: 2
+		id: "2"
 	},
 	{
 		name: "test3",
 		number: "123",
 		email: "123@a.a",
-		id: 3
+		id: "3"
 	}
 ];
 // commenting for test
@@ -82,7 +82,7 @@ app.post("/tables", function(req, res) {
 
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
+  // newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 
   console.log(newReservation);
 
