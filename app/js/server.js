@@ -16,11 +16,26 @@ app.use(bodyParser.json());
 // Store (DATA)
 // =============================================================
 var reservation = [
- // define all fields required
- {
-   
- }
-  
+// define all fields required
+	{
+		name: "test1",
+		number: "123",
+		email: "123@a.a",
+		id: 1
+	},
+	{
+		name: "test2",
+		number: "123",
+		email: "123@a.a",
+		id: 2
+	},
+	{
+		name: "test3",
+		number: "123",
+		email: "123@a.a",
+		id: 3
+	}
+
 ];
 
 // Routes
@@ -28,7 +43,7 @@ var reservation = [
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/home.html"));
+  	res.sendFile(path.join(__dirname, "../public/home.html"));
 });
 
 app.get("/reserve", function(req, res) {
@@ -40,19 +55,28 @@ app.get("/tables", function(req, res) {
 });
 
 // Displays all characters
-app.get("/api/characters", function(req, res) {
-  return res.json(characters);
+app.get("/api/tables", function(req, res) {
+  return res.json(reservation);
 });
 
 // Displays a single character, or returns false
-app.get("/api/characters/:character", function(req, res) {
+<<<<<<< HEAD
+app.get("/api/tables/:id", function(req, res) {
+  var chosen = req.params.id;
+=======
+app.get("/tables/:character", function(req, res) {
   var chosen = req.params.character;
+>>>>>>> 2f1023ae27011da3c3176dc883f4dd2cac1fa923
 
   console.log(chosen);
 
-  for (var i = 0; i < characters.length; i++) {
-    if (chosen === characters[i].routeName) {
-      return res.json(characters[i]);
+  for (var i = 0; i < reservation.length; i++) {
+<<<<<<< HEAD
+    if (chosen === reservation[i].id.toString()) {
+=======
+    if (chosen === reservation[i].routeName) {
+>>>>>>> 2f1023ae27011da3c3176dc883f4dd2cac1fa923
+      return res.json(reservation[i]);
     }
   }
 
@@ -60,20 +84,20 @@ app.get("/api/characters/:character", function(req, res) {
 });
 
 // POST routes
-app.post("/api/characters", function(req, res) {
+app.post("/tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body-parser middleware
-  var newcharacter = req.body;
+  var newReservation = req.body;
 
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+  newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newcharacter);
+  console.log(newReservation);
 
-  characters.push(newcharacter);
+  reservation.push(newReservation);
 
-  res.json(newcharacter);
+  res.json(newReservation);
 });
 
 // Starts the server to begin listening
