@@ -35,7 +35,6 @@ var reservation = [
 		email: "123@a.a",
 		id: 3
 	}
-
 ];
 
 // Routes
