@@ -70,9 +70,9 @@
 
         var newReservation = {
           name: $("#name").val().trim(),
+          number: $("#phoneNum").val().trim(),
           email: $("#email").val().trim(),
-          unqiueID: $("#uniqueID").val().trim(),
-          phoneNum: $("#phoneNum").val().trim()
+          id: $("#uniqueID").val().trim()
         };
 
         // Question: What does this code do??
@@ -80,6 +80,7 @@
           .then(function(data) {
             console.log(data);
             alert("Adding reservation...");
+            window.open("/tables", "_self");
           });
 
       });
